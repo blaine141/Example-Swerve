@@ -34,6 +34,7 @@ public class DrivetrainSubsystem extends SwerveDrivetrain {
         gyroscope.calibrate();
         gyroscope.setInverted(true); // You might not need to invert the gyro
 
+        // Initialize each motor with position relative to center and it's sensors
         SwerveModule frontLeftModule = new Mk2SwerveModule(
                 new Vector2(-TRACKWIDTH / 2.0, WHEELBASE / 2.0),
                 FRONT_LEFT_ANGLE_OFFSET,
@@ -78,6 +79,9 @@ public class DrivetrainSubsystem extends SwerveDrivetrain {
         };
     }
 
+    /**
+     * Gets the singleton instance of DrivetrainSubsystem
+     */
     public static DrivetrainSubsystem getInstance() {
         synchronized (INSTANCE_LOCK) {
             if (instance == null) {
